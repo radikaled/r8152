@@ -16627,7 +16627,7 @@ static int rtl8152_post_reset(struct usb_interface *intf)
 	/* reset the MAC adddress in case of policy change */
 	if (determine_ethernet_addr(tp, &sa) >= 0) {
 		rtnl_lock();
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
+#if ((LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)) && !RHEL_RELEASE_CODE)
 		dev_set_mac_address(tp->netdev, &sa);
 #else
 		dev_set_mac_address(tp->netdev, &sa, NULL);
