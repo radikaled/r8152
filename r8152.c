@@ -2791,7 +2791,7 @@ static void rtl_drop_queued_tx(struct r8152 *tp)
 	}
 }
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0)
+#if ((LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0)) && !RHEL_RELEASE_CODE)
 static void rtl8152_tx_timeout(struct net_device *netdev)
 #else
 static void rtl8152_tx_timeout(struct net_device *netdev, unsigned int txqueue)
